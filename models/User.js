@@ -32,6 +32,11 @@ const UserSchema = new mongoose.Schema({
     maxLength: 500,
     default: null 
   },
+  UserType: { 
+    type: String, 
+    enum: ['admin', 'user', 'manager'],
+    default: 'user' 
+  },
   Created: { 
     type: Date, 
     required: true, 
