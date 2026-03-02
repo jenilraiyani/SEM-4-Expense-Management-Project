@@ -1,0 +1,224 @@
+:root {
+    /* Backgrounds: Obsidian & Deep Slate Layers */
+    --bg-dark: #0A0A0B;      /* Obsidian: The deepest base for maximum gold contrast */
+    --bg-card: #17171A;      /* Graphite: Sleek surfaces that make stats "glow" */
+    --bg-input: #0F0F11;     /* Inset Shadow: For tactile-feeling entry fields */
+    
+    /* Structure & Accents - The "Midas" Touch */
+    --border: #27272A;       /* Dark Zinc: Subtle, low-contrast separation */
+    --accent-blue: #D4AF37;  /* Metallic Gold: Your new hallmark action color */
+    
+    /* Typography - Silk White & Steel */
+    --text-main: #FFFFFF;    /* Silk White: Sharp, needle-like clarity on dark backgrounds */
+    --text-dim: #A1A1AA;     /* Steel Grey: Sophisticated labels and secondary info */
+
+    /* Financial Indicators (Jewel Tones) */
+    --success: #10B981;      /* Emerald: A vivid, glowing green for income */
+    --warning: #D4AF37;      /* Gold: Consistent with branding for pending/premium goals */
+    --danger: #F43F5E;       /* Rose: A designer red for expenses (less "stop sign" alarm) */
+}
+/* Dotted Background Pattern */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-dark);
+    background-image: radial-gradient(#1f2937 1.5px, transparent 0);
+    background-size: 32px 32px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 440px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 48px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Branding */
+.brand-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.brand-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.logo-triangle {
+    width: 0;
+    height: 0;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+    border-bottom: 30px solid var(--accent-blue);
+    filter: drop-shadow(0 0 8px rgba(47, 129, 247, 0.5));
+}
+
+.brand-name {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-main);
+}
+
+.welcome-text {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin: 8px 0 0 0;
+}
+
+/* Role Toggle */
+.role-toggle {
+    display: flex;
+    background-color: #21262d;
+    padding: 4px;
+    border-radius: 8px;
+    margin-bottom: 32px;
+}
+
+.role-toggle button {
+    flex: 1;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.role-toggle button.active {
+    background-color: var(--accent-blue);
+    color: white;
+    box-shadow: 0 4px 12px rgba(47, 129, 247, 0.3);
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper input {
+    width: 100%;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 44px 14px 16px;
+    color: white;
+    font-size: 15px;
+    transition: border-color 0.2s;
+}
+
+.input-wrapper input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+}
+
+.field-icon {
+    position: absolute;
+    right: 16px;
+    color: var(--text-dim);
+    font-size: 18px;
+}
+
+.eye-toggle {
+    cursor: pointer;
+}
+
+.btn-signin {
+    width: 100%;
+    background-color: var(--accent-blue);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: opacity 0.2s;
+}
+
+.btn-signin:hover {
+    opacity: 0.9;
+}
+
+/* Footer Links */
+.login-footer {
+    text-align: center;
+    margin-top: 32px;
+}
+
+.link-forgot {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-divider {
+    height: 1px;
+    background-color: var(--border);
+    margin: 24px 0;
+}
+
+.link-support {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.arrow {
+    transition: transform 0.2s;
+}
+
+.link-support:hover .arrow {
+    transform: translateX(4px);
+}
+.btn-primary {
+    background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+    color: #000000; /* Pitch black text on gold is the "premium" signature */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px; /* Sharp corners = High-precision engineering */
+    border: none;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    transform: translateY(-1px);
+}
+
+.card {
+    border: 1px solid var(--border);
+    /* Subtle gold highlight on the top edge only for VIP widgets */
+    border-top: 2px solid var(--accent-blue);
+}

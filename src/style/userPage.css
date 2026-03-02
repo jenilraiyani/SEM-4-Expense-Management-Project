@@ -1,0 +1,483 @@
+:root {
+    /* Backgrounds: Obsidian & Onyx Layers */
+    --bg-deep: #0A0A0B;      /* Obsidian: The deepest base for maximum prestige */
+    --bg-side: #121214;      /* Carbon: Anchors the navigation with subtle depth */
+    --bg-card: #17171A;      /* Graphite: Sleek surfaces that make data "glow" */
+    --bg-field: #0F0F11;     /* Inset Shadow: Tactile-feeling fields for entry */
+    
+    /* Typography: Silk White & Steel */
+    --text-main: #FFFFFF;    /* Silk White: Needle-sharp clarity for stats */
+    --text-dim: #A1A1AA;     /* Steel Grey: Sophisticated labels and captions */
+    
+    /* Structure & Accents - The "Midas" Touch */
+    --border: #27272A;       /* Dark Zinc: Minimalist, low-contrast separation */
+    --blue-act: #D4AF37;     /* Metallic Gold: Your hallmarks for primary actions */
+    
+    /* Status Colors: Jewel Tones */
+    --green-act: #10B981;    /* Emerald: A vivid, glowing green for income */
+    --orange-pen: #D4AF37;   /* Gold: Consistent with your premium brand */
+    --red-out: #F43F5E;      /* Rose Water: A designer red for expenses */
+}
+body {
+    margin: 0;
+    background: var(--bg-deep);
+    color: var(--text-main);
+    font-family: -apple-system, sans-serif;
+}
+
+.admin-wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    background: var(--bg-side);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0;
+}
+
+.sidebar-brand {
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.logo-hex {
+    width: 32px;
+    height: 32px;
+    background: var(--blue-act);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+.sidebar-brand h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.sidebar-brand p {
+    margin: 0;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+}
+
+.nav-item {
+    padding: 12px 24px;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.nav-item.active {
+    background: rgba(47, 129, 247, 0.1);
+    color: var(--blue-act);
+    border-right: 3px solid var(--blue-act);
+}
+
+.sidebar-profile {
+    margin-top: auto;
+    padding: 20px 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.p-avatar {
+    width: 32px;
+    height: 32px;
+    background: #e3b341;
+    border-radius: 50%;
+}
+
+.p-name {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.p-email {
+    margin: 0;
+    font-size: 11px;
+    color: var(--text-dim);
+}
+
+/* Top Header */
+.main-content {
+    flex: 1;
+    padding: 20px 48px;
+    overflow-y: auto;
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.breadcrumb {
+    font-size: 12px;
+    color: var(--text-dim);
+}
+
+.breadcrumb span {
+    color: var(--text-main);
+}
+
+.header-right {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.global-search {
+    position: relative;
+    width: 280px;
+}
+
+.global-search input {
+    width: 100%;
+    background: var(--bg-field);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px 8px 32px;
+    color: white;
+}
+
+.global-search span {
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    font-size: 12px;
+}
+
+/* Content Grid */
+.management-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 32px;
+}
+
+.table-container {
+    background: var(--bg-card);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 24px;
+}
+
+.table-header-tools {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.inner-search {
+    position: relative;
+    width: 320px;
+}
+
+.inner-search input {
+    width: 100%;
+    background: var(--bg-field);
+    border: 1px solid var(--border);
+    padding: 10px 0px 10px 5px;
+    border-radius: 8px;
+    color: white;
+}
+
+.search-icon {
+    position: absolute;
+    left: 14px;
+    top: 10px;
+    color: var(--text-dim);
+}
+
+.btn-tool {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+/* User Table */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-table th {
+    text-align: left;
+    font-size: 11px;
+    color: var(--text-dim);
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.user-table td {
+    padding: 16px 12px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+}
+
+.user-info-cell {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.u-full-name {
+    margin: 0;
+    font-weight: 600;
+}
+
+.u-email-addr {
+    margin: 0;
+    font-size: 11px;
+    color: var(--text-dim);
+}
+
+.role-cell,
+.contact-cell {
+    color: var(--text-dim);
+    font-size: 13px;
+}
+
+.status-tag {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    border: 1px solid transparent;
+}
+
+.status-tag.active {
+    background: rgba(63, 185, 80, 0.1);
+    color: var(--green-act);
+    border-color: rgba(63, 185, 80, 0.2);
+}
+
+.status-tag.pending {
+    background: rgba(210, 153, 34, 0.1);
+    color: var(--orange-pen);
+    border-color: rgba(210, 153, 34, 0.2);
+}
+
+.status-tag.inactive {
+    background: rgba(72, 79, 88, 0.1);
+    color: var(--text-dim);
+    border-color: var(--border);
+}
+
+.table-pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    font-size: 12px;
+    color: var(--text-dim);
+}
+
+.page-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.page-num {
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.page-num.active {
+    background: var(--blue-act);
+    color: white;
+}
+
+/* Add User Panel */
+.add-user-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    height: fit-content;
+}
+
+.panel-head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.panel-head h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.avatar-upload {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.upload-circle {
+    width: 80px;
+    height: 80px;
+    border: 2px dashed var(--border);
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.up-icon {
+    font-size: 20px;
+}
+
+.upload-circle p {
+    font-size: 9px;
+    margin-top: 4px;
+    font-weight: 700;
+}
+
+.edit-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: var(--blue-act);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--bg-card);
+}
+
+.form-field {
+    margin-bottom: 20px;
+}
+
+.form-field label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+}
+
+.form-field input,
+.form-field select {
+    width: 100%;
+    background: var(--bg-field);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    color: white;
+    box-sizing: border-box;
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.field-icon {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    color: var(--text-dim);
+}
+
+.input-with-icon input {
+    padding-left: 40px;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    color: var(--text-dim);
+    cursor: pointer;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.btn-cancel {
+    flex: 1;
+    background: #21262d;
+    border: 1px solid var(--border);
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+:xr-overlay
+.btn-save {
+    flex: 1;
+    background: var(--blue-act);
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    /* Subtle, large-spread shadow for a premium feel */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 
+                0 4px 6px -2px rgba(0, 0, 0, 0.02);
+}
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px; /* Sharper corners = High-precision engineering */
+    padding: 24px;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+    color: #000000; /* Pitch black text on gold is the "premium" signature */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: none;
+    transition: filter 0.2s ease;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.2);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}

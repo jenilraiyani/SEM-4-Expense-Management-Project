@@ -1,0 +1,322 @@
+:root {
+    /* Background Hierarchy - Obsidian & Onyx Layers */
+    --bg-deep: #0A0A0B;      /* Obsidian: Deepest base for maximum prestige */
+    --bg-surface: #121214;   /* Carbon: Anchors the sidebars with subtle depth */
+    --bg-card: #17171A;      /* Graphite: Lifts widgets with a sleek metallic feel */
+    --bg-input: #0F0F11;     /* Inset Shadow: For tactile-feeling data fields */
+    
+    /* Borders & Dividers - Subtle Zinc */
+    --border: #27272A;       /* Dark Zinc: Keeps sections separated without clutter */
+    
+    /* Typography - Silk White & Steel */
+    --text-primary: #FFFFFF; /* Pure White: High-contrast clarity for stats */
+    --text-muted: #A1A1AA;   /* Steel Grey: For secondary labels and timestamps */
+    
+    /* Professional Action & Status Colors - Metallic Accents */
+    --blue: #D4AF37;         /* Metallic Gold: Your primary action and brand color */
+    --green: #10B981;        /* Emerald: A vivid, glowing green for income */
+    --orange: #D4AF37;       /* Gold: Used consistently for pending or premium items */
+    --red: #F43F5E;          /* Rose: A sophisticated red for expenses */
+}
+body {
+    margin: 0;
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: -apple-system, sans-serif;
+}
+
+/* Main Content Area */
+.main-viewport {
+    flex: 1;
+    padding: 20px 40px;
+    overflow-y: auto;
+}
+
+.view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.breadcrumb {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.breadcrumb span {
+    color: var(--text-primary);
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box input {
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px 8px 32px;
+    color: white;
+    width: 240px;
+}
+
+.search-box span {
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    font-size: 12px;
+}
+
+.view-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 32px;
+}
+
+.view-title-row h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.view-title-row p {
+    margin: 8px 0 0 0;
+    color: var(--text-muted);
+}
+
+.btn-secondary {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--blue);
+    border: none;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Grid Layout */
+.category-grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 24px;
+}
+
+.category-card,
+.detail-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Left List Column */
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.card-top h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.category-list {
+    padding: 12px;
+}
+
+.cat-item {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    transition: background 0.2s;
+}
+
+.cat-item.selected {
+    background: rgba(47, 129, 247, 0.1);
+    border: 1px solid var(--blue);
+}
+
+.cat-icon-box {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+}
+
+.cat-info {
+    flex: 1;
+}
+
+.cat-name {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.cat-sub {
+    margin: 4px 0 0 0;
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.cat-badge {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 12px;
+}
+
+.cat-badge.expense {
+    background: rgba(248, 81, 73, 0.1);
+    color: var(--red);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+}
+
+.cat-badge.income {
+    background: rgba(63, 185, 80, 0.1);
+    color: var(--green);
+    border: 1px solid rgba(63, 185, 80, 0.2);
+}
+
+.chevron {
+    color: var(--text-muted);
+    font-size: 18px;
+}
+
+/* Right Detail Column */
+.detail-header {
+    padding: 32px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.detail-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.detail-title h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.detail-meta p {
+    margin: 12px 0 0 0;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.btn-icon {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 12px;
+}
+
+.btn-accent {
+    background: rgba(47, 129, 247, 0.15);
+    border: 1px solid var(--blue);
+    color: var(--blue);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.sub-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sub-table th {
+    text-align: left;
+    padding: 16px 32px;
+    font-size: 11px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+}
+
+.sub-table td {
+    padding: 20px 32px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.detail-footer {
+    padding: 20px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.detail-footer p {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.status-pill {
+    background: rgba(47, 129, 247, 0.1);
+    color: var(--blue);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 4px;
+}
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px; /* Sharper corners look more expensive and precise */
+    padding: 24px;
+    position: relative;
+    /* Subtle glow to simulate high-end lighting */
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.card-vip {
+    border-top: 2px solid var(--blue); /* Adds a "Gold Leaf" accent to top-tier cards */
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+    color: #000000; /* Pitch black text on gold for maximum luxury feel */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: none;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}   
