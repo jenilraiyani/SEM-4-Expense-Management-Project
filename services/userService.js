@@ -5,7 +5,19 @@ exports.getAllUsers = async () => {
 };
 
 exports.createUser = async (data) => {
-  const newUser = new User(data);
+  // Get the last user to determine next UserID
+  const lastUser = await User.findOne().sort({ UserID: -1 });
+  let nextUserID = 101;
+
+  if (lastUser && lastUser.UserID) {
+    nextUserID = lastUser.UserID + 1;
+  }
+
+  // Create new user with auto-incremented ID
+  const newUser = new User({
+    ...data,
+    UserID: nextUserID
+  });
   return await newUser.save();
 };
 
@@ -14,7 +26,7 @@ exports.updateUser = async (id, data) => {
 };
 
 exports.getUserById = async (id) => {
-    return await User.findOne({ UserID: id }).select('-Password');
+  return await User.findOne({ UserID: id }).select('-Password');
 };
 
 exports.deleteUser = async (id) => {

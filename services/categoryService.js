@@ -5,7 +5,20 @@ exports.getAllCategories = async () => {
 };
 
 exports.createCategory = async (data) => {
-  const newCategory = new Category(data);
+
+  // Get the last category to determine next CategoryID
+  const lastCategory = await Category.findOne().sort({ CategoryID: -1 });
+  let nextCategoryID = 1;
+
+  if (lastCategory && lastCategory.CategoryID) {
+    nextCategoryID = lastCategory.CategoryID + 1;
+  }
+
+  // Create new category with auto-incremented ID
+  const newCategory = new Category({
+    ...data,
+    CategoryID: nextCategoryID
+  });
   return await newCategory.save();
 };
 
@@ -14,7 +27,7 @@ exports.updateCategory = async (id, data) => {
 };
 
 exports.getCategoryById = async (id) => {
-    return await Category.findOne({ CategoryID: id });
+  return await Category.findOne({ CategoryID: id });
 };
 
 exports.deleteCategory = async (id) => {

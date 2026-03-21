@@ -47,3 +47,29 @@ exports.delete = async (req, res) => {
     res.status(400).json({ success: false, message: err.message });
   }
 };
+
+// ... existing project controller functions ...
+
+// 👇 ADD THIS NEW CONTROLLER FUNCTION 👇
+exports.getProjectsByUserId = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const data = await projectService.getProjectsByUserId(userId);
+    
+    if (!data || data.length === 0) {
+      return res.status(200).json({ 
+        success: true, 
+        message: "No projects found for this user", 
+        data: [] 
+      });
+    }
+
+    res.status(200).json({ 
+      success: true, 
+      count: data.length, 
+      data: data 
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};

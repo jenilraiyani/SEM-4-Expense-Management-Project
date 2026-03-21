@@ -11,11 +11,6 @@ const PeopleSchema = new mongoose.Schema({
     maxLength: 50,
     default: null
   },
-  Password: { 
-    type: String, 
-    required: true, 
-    maxLength: 50 
-  },
   PeopleName: { 
     type: String, 
     required: true, 

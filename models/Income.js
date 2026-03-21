@@ -1,64 +1,94 @@
 const mongoose = require('mongoose');
 
 const IncomeSchema = new mongoose.Schema({
-  IncomeID: { 
-    type: Number, 
-    required: true, 
-    unique: true 
-  },
-  IncomeDate: { 
-    type: Date, 
-    required: true 
-  },
-  CategoryID: { 
+  IncomeID: {
     type: Number,
-    default: null 
+    required: true,
+    unique: true
   },
-  SubCategoryID: { 
+  IncomeDate: {
+    type: Date,
+    required: true
+  },
+  CategoryID: {
     type: Number,
-    default: null 
+    ref:'Category',
+    default: null
   },
-  PeopleID: { 
-    type: Number, 
-    required: true 
-  },
-  ProjectID: { 
+  SubCategoryID: {
     type: Number,
-    default: null 
+    default: null
   },
-  Amount: { 
-    type: Number, 
-    required: true 
+  PeopleID: {
+    type: Number,
+    required: true
   },
-  IncomeDetail: { 
-    type: String, 
+  ProjectID: {
+    type: Number,
+    default: null
+  },
+  Amount: {
+    type: Number,
+    required: true
+  },
+  IncomeDetail: {
+    type: String,
     maxLength: 500,
-    default: null 
+    default: null
   },
-  AttachmentPath: { 
-    type: String, 
+  AttachmentPath: {
+    type: String,
     maxLength: 250,
-    default: null 
+    default: null
   },
-  Description: { 
-    type: String, 
+  Description: {
+    type: String,
     maxLength: 500,
-    default: null 
+    default: null
   },
-  UserID: { 
-    type: Number, 
-    required: true 
+  UserID: {
+    type: Number,
+    ref: 'User', // 👈 ADD THIS REFERENCE
+    required: true
   },
-  Created: { 
-    type: Date, 
-    required: true, 
-    default: Date.now 
+  Created: {
+    type: Date,
+    required: true,
+    default: Date.now
   },
-  Modified: { 
-    type: Date, 
-    required: true, 
-    default: Date.now 
-  }
+  Modified: {
+    type: Date,
+    required: true,
+    default: Date.now
+  },
+  Status: { type: String, enum: ['pending', 'approved', 'rejected'], default: 'pending' }
+}, {
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
+});
+
+// 👈 ADD VIRTUAL FOR USER DATA
+IncomeSchema.virtual('UserData', {
+  ref: 'User',
+  localField: 'UserID',
+  foreignField: 'UserID',
+  justOne: true
+});
+
+// Keep existing People virtual
+IncomeSchema.virtual('PeopleData', {
+  ref: 'People',
+  localField: 'PeopleID',
+  foreignField: 'PeopleID',
+  justOne: true
+});
+
+// 👇 Add virtual for Category data
+IncomeSchema.virtual('CategoryData', {
+  ref: 'Category',
+  localField: 'CategoryID',
+  foreignField: 'CategoryID',
+  justOne: true
 });
 
 module.exports = mongoose.model('Income', IncomeSchema);

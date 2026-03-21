@@ -46,4 +46,24 @@ exports.delete = async (req, res) => {
   } catch (err) {
     res.status(400).json({ success: false, message: err.message });
   }
-};  
+};
+// 👇 ADD THIS NEW CONTROLLER FUNCTION 👇
+exports.getExpensesByUserId = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    
+    // Call the service function we just made
+    const expenses = await expenseService.getExpensesByUserId(userId);
+
+    res.status(200).json({ 
+      success: true, 
+      data: expenses 
+    });
+  } catch (error) {
+    console.error("Error fetching user expenses:", error);
+    res.status(500).json({ 
+      success: false, 
+      message: error.message 
+    });
+  }
+};

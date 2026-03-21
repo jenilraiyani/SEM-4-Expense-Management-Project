@@ -9,7 +9,12 @@ const app = express();
 const authRoutes = require('./routes/auth.routes');
 const verifyToken = require('./middleware/auth.middleware');
 
+app.get('/test', (req, res) => {
+  res.send("Working!!!!!!!");
+})
+
 connectDB();
+
 
 app.use(express.json());
 app.use(cors());

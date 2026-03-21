@@ -11,7 +11,7 @@ const CategorySchema = new mongoose.Schema({
     required: true, 
     maxLength: 250 
   },
-  LogoPath: { 
+  LogoPath: {
     type: String, 
     maxLength: 250,
     default: null 
